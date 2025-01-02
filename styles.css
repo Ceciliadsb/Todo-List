@@ -1,11 +1,12 @@
 /* Estilo base */
 body {
-background-image: url(/project-node/toolist/assets/background.png);
+background-image: url(assets/background.png);
 background-size: cover;
 background-position: center;
-background-repeat: no-repeat;
+background-repeat: repeat;
 display: flex;
 flex-wrap: wrap;
+gap: 20px;
 font-family: 'Roboto', sans-serif;
 margin: 0;
 height: 100vh;
@@ -35,6 +36,7 @@ padding: 30px;
 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 margin: 20px;
 max-width: 600px;
+height: auto;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -118,71 +120,62 @@ margin-left: 10px;
 .task i:hover {
 color: #00f2fe;
 }
+canvas {
+    width: 100%; /* Escala conforme o tamanho da sidebar */
+    max-width: 300px;
+    height: auto; /* Mantém a proporção do gráfico */
+}
+
 
 /* Ajustes para dispositivos menores (telas até 768px) */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
+/* Ajustar a direção do flex para telas pequenas */
 
+@media (min-width: 901px) {
     .sidebar {
-        width: 100%;
-        max-width: none;
-        margin-bottom: 20px;
+        flex: 1; /* Ocupa o espaço necessário */
     }
 
     .container {
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        padding: 20px;
+        flex: 2; /* Ocupa o dobro do espaço da sidebar */
+        max-width: 600px; /* Limitar o tamanho para manter a proporção */
+    }
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column; /* Colocar a sidebar e o container em colunas */
+        align-items: center; /* Centralizar o conteúdo */
     }
 
-    .sidebar h2 {
-        font-size: 20px;
+    .sidebar,
+    .container {
+        max-width: 90%; /* Ocupa 90% da largura da tela */
+        margin: 0 auto; /* Centralizar no eixo horizontal */
+    }
+
+    .container {
+        margin-top: 20px; /* Espaço entre a sidebar e o container */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar h2, .container h1 {    
+        font-size: 18px;
         text-align: center;
     }
 
-    .container h1 {
-        font-size: 22px;
-    }
-}
-
-/* Ajustes para dispositivos muito pequenos (telas até 480px) */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    .sidebar {
-        width: 100%;
-        padding: 15px;
-        box-shadow: none;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .input-task,
-    .input-time,
-    .input-day {
+    .input-task, .input-time, .input-day, .button-add-task {
         font-size: 14px;
-        height: 35px;
-    }
-
-    .button-add-task {
-        font-size: 16px;
-        height: 35px;
+        padding: 8px;
     }
 
     .task {
-        padding: 8px 12px;
+        font-size: 12px;
     }
 
     .task i {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
+
